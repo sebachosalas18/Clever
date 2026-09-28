@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clever · Moda y ropa deportiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2b2633;--mut:#7d7688;--line:#ece7ee;--bg:#fff;--soft:#faf6f8;--pink:#d9628f;--pink-l:#f8dfe8;--yel:#fbeeb0;--blue:#cfe0f1;--blue-d:#4f7396;
+--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);font-weight:300;line-height:1.6}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.wrap{max-width:1200px;margin:auto;padding:0 20px}
+.top{background:var(--yel);text-align:center;font-size:13px;padding:6px}
+header{position:sticky;top:0;z-index:20;background:#fffffff2;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:var(--serif);font-size:32px;font-weight:600;letter-spacing:.5px;color:var(--pink)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:14px}
+nav a:hover{color:var(--pink)}
+.icons{display:flex;gap:6px;align-items:center}
+.ib{position:relative;width:38px;height:38px;border-radius:50%;font-size:18px}
+.ib:hover{background:var(--soft)}
+.cnt{position:absolute;top:0;right:0;background:var(--pink);color:#fff;font-size:11px;min-width:17px;height:17px;border-radius:9px;display:grid;place-items:center}
+.bump{animation:bump .4s}@keyframes bump{50%{transform:scale(1.35)}}
+#sb{display:none;border-top:1px solid var(--line);padding:10px 0}#sb.on{display:block}
+#sb input{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:24px;font:inherit}
+.burger{display:none;font-size:22px}
+.hero{background:linear-gradient(90deg,#fff8fbf2 0%,#fff8fbb3 42%,#fff8fb00 75%),url(https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80) center/cover,linear-gradient(135deg,#f8dfe8,#cfe0f1)}
+[hidden]{display:none!important}
+.hero .t{display:flex;flex-direction:column;justify-content:center;padding:80px 6vw;gap:20px;max-width:680px;min-height:640px}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,72px);line-height:1.02;font-weight:500}
+.hero p{max-width:420px;color:#5d5568}
+.band{min-height:75vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;background:var(--bg-b) center/cover,linear-gradient(135deg,#cfe0f1,#f8dfe8)}
+.band>div{background:#ffffffeb;padding:40px 46px;max-width:480px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+.b1{--bg-b:url(https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80)}
+.b2{--bg-b:url(https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=80)}
+.ov{position:fixed;inset:0;background:#2b263366;opacity:0;pointer-events:none;transition:.3s;z-index:55}.ov.on{opacity:1;pointer-events:auto}
+.dr{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:#fff;z-index:60;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}.dr.on{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line)}
+.dh h3{font-family:var(--serif);font-size:28px;font-weight:600}.cl{font-size:32px;line-height:1}
+.db{flex:1;overflow:auto;padding:16px 22px}.df{padding:16px 22px;border-top:1px solid var(--line);background:var(--soft)}
+.ship{font-size:13px;margin-bottom:10px}.ship i{display:block;height:5px;background:var(--line);margin-top:6px;border-radius:3px;overflow:hidden}.ship b{display:block;height:100%;background:var(--pink)}
+.li{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.th{width:72px;height:92px;overflow:hidden}.th img{width:100%;height:100%;object-fit:cover}
+.li small{display:block;color:var(--mut);text-transform:capitalize}
+.qt{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);margin-top:6px}.qt button{width:28px;height:28px}
+.rm{display:block;font-size:12px;text-decoration:underline;color:var(--mut);margin:6px 0 0 auto}
+.em{text-align:center;color:var(--mut);padding:50px 10px}
+.cd{margin-bottom:12px}.cd label{font-size:13px;display:block;margin-bottom:4px}
+.cr{display:flex}.cr input{flex:1;min-width:0;padding:10px;border:1px solid var(--line);font:inherit;text-transform:uppercase}.cr button{background:var(--pink);color:#fff;padding:0 18px}
+.cd small{font-size:12px;color:var(--mut)}
+.tag{display:flex;justify-content:space-between;align-items:center;background:var(--yel);padding:9px 12px;font-size:14px}
+.tr{display:flex;justify-content:space-between;font-size:14px;padding:2px 0}.tr.t{font-size:19px;border-top:1px solid var(--line);margin-top:6px;padding-top:8px}
+.ck{display:block;text-align:center;margin-top:12px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:13px 26px;font-size:14px;letter-spacing:.4px;border:1px solid var(--ink);transition:.2s}
+.btn.p{background:var(--ink);color:#fff}.btn.p:hover{background:var(--pink);border-color:var(--pink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+.strip{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding:18px;font-size:14px;border-bottom:1px solid var(--line);color:var(--mut)}
+section{padding:80px 0}
+h2{font-family:var(--serif);font-size:clamp(32px,4vw,46px);font-weight:500;text-align:center;line-height:1.1}
+.sub{text-align:center;color:var(--mut);margin:8px 0 30px}
+.tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.tab{padding:9px 22px;border-radius:30px;border:1px solid var(--line);font-size:14px}
+.tab.on{color:#fff;background:var(--pink);border-color:var(--pink)}
+.tab[data-c=hombre].on{background:var(--blue-d);border-color:var(--blue-d)}
+.tab[data-c=acc].on{background:var(--ink);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:30px 22px}
+.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:box-shadow .3s}
+.card:hover{box-shadow:0 14px 34px #d9628f26}
+.inf{padding:12px 14px 16px;display:flex;flex-direction:column;gap:9px}
+.pr{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chip{font-size:12px;padding:2px 11px;border-radius:12px}
+.c-mujer{background:var(--pink-l)}.c-hombre{background:var(--blue)}.c-acc{background:var(--yel)}
+.ttl{position:absolute;left:0;right:0;bottom:0;padding:46px 14px 12px;background:linear-gradient(#fff0,#fffffff2 65%);z-index:2;pointer-events:none}
+#mujer{background:linear-gradient(#fff,#fef3f7)}#hombre{background:linear-gradient(#fff,#f2f7fd)}#acc{background:linear-gradient(#fff,#fffbea)}
+.ph{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;background:var(--bg-c,var(--soft))}
+.ph img{mix-blend-mode:multiply;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ph:hover img{transform:scale(1.07)}
+.badge{position:absolute;top:10px;left:10px;z-index:2;background:var(--yel);font-size:12px;padding:2px 10px;border-radius:12px;z-index:2}
+.heart{position:absolute;top:8px;right:8px;z-index:2;width:34px;height:34px;border-radius:50%;background:#ffffffe0;font-size:17px;color:var(--pink)}
+.so .ph img{filter:grayscale(1);opacity:.45}
+.so .ph::after{content:"SOLD OUT";position:absolute;inset:auto 0 45%;text-align:center;letter-spacing:6px;font-size:14px;background:#ffffffd9;padding:8px;z-index:1}
+.card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.15}
+.price{font-weight:400}.price s{color:var(--mut);margin-left:6px;font-size:14px}
+.sw{display:flex;gap:7px}
+.dot{width:20px;height:20px;border-radius:50%;border:1px solid #0002;box-shadow:0 0 0 2px #fff inset}
+.dot.on{outline:1.5px solid var(--ink);outline-offset:2px}
+.sz{display:flex;gap:5px;flex-wrap:wrap}
+.szb{min-width:34px;height:30px;border:1px solid var(--line);font-size:13px;padding:0 6px}
+.szb.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.stock{font-size:13px;color:var(--mut)}.stock.low{color:#c2410c}
+.add{padding:11px;background:var(--ink);color:#fff;font-size:14px;transition:.2s}
+.add:hover:not(:disabled){background:var(--pink)}
+.add:disabled{background:#d8d4dc;cursor:not-allowed}
+.nt{font-size:13px;text-decoration:underline;color:var(--pink);text-align:left}
+.rv{background:var(--soft)}
+.rvg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.rc{background:#fff;padding:26px;border-top:3px solid var(--pink)}
+.rc:nth-child(2){border-color:var(--yel)}.rc:nth-child(3){border-color:var(--blue)}
+.st{color:#e8a300;letter-spacing:2px}
+.rc p{font-family:var(--serif);font-size:20px;line-height:1.35;margin:10px 0 14px}
+.rc small{color:var(--mut)}
+.lb{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.lb div{position:relative;aspect-ratio:1;overflow:hidden;background:var(--c)}
+.lb div:nth-child(1),.lb div:nth-child(6){grid-column:span 2;grid-row:span 2}
+.lb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.lb span{position:absolute;inset:0;background:#d9628fe6;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:14px;opacity:0;transition:.3s;padding:10px}
+.lb div:hover span,.lb div:focus span{opacity:1}
+.lb b{font-family:var(--serif);font-size:20px;font-weight:500}
+footer{background:var(--ink);color:#e9e5ee;padding:60px 0 24px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:34px}
+footer h4{font-family:var(--serif);font-size:20px;margin-bottom:10px;font-weight:500}
+footer li{list-style:none;font-size:14px;margin-bottom:5px}
+.wa{display:inline-block;background:#25d366;color:#0b3d20;padding:12px 22px;font-weight:500;margin:10px 0}
+.nl{display:flex;margin-top:8px}
+.nl input{flex:1;min-width:0;padding:11px;border:0;font:inherit}
+.nl button{background:var(--pink);color:#fff;padding:0 18px}
+.pay{font-size:13px;color:#b9b2c4;margin-top:10px}
+.copy{text-align:center;font-size:13px;color:#b9b2c4;border-top:1px solid #ffffff22;margin-top:40px;padding-top:18px}
+.md{position:fixed;inset:0;background:#2b263380;display:none;place-items:center;z-index:50;padding:16px}
+.md.on{display:grid}
+.mb{background:#fff;max-width:820px;width:100%;display:grid;grid-template-columns:1fr 1fr;position:relative;max-height:92vh;overflow:auto}
+.mb .ph{aspect-ratio:auto;min-height:420px}
+.mi{padding:34px 28px;display:flex;flex-direction:column;gap:12px}
+.mi h3{font-family:var(--serif);font-size:32px;line-height:1.1}
+.x{position:absolute;top:8px;right:12px;font-size:28px;z-index:3}
+#toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,90px);background:var(--ink);color:#fff;padding:12px 22px;border-left:4px solid var(--yel);transition:.35s;z-index:99;font-size:14px;max-width:90vw}
+#toast.on{transform:translate(-50%,0)}
+@media(max-width:860px){
+nav{position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);display:none;padding:14px 20px}
+nav.on{display:block}nav ul{flex-direction:column;gap:14px}.burger{display:block}
+.hero{background-position:70% center}.hero .t{min-height:520px;padding:50px 22px}.band{min-height:55vh}
+.lb{grid-template-columns:repeat(2,1fr)}.fg{grid-template-columns:1fr 1fr}
+.mb{grid-template-columns:1fr}.mb .ph{min-height:300px}}
+@media(max-width:520px){.fg{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}.card h3{font-size:18px}section{padding:56px 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="top">Envíos a toda Colombia · Cambios gratis en 30 días</div>
+<header>
+ <div class="wrap nav">
+  <button class="burger" id="bg" aria-label="Menú">☰</button>
+  <a href="#top" class="logo">Clever</a>
+  <nav id="nv"><ul>
+   <li><a href="#mujer">Mujer</a></li><li><a href="#hombre">Hombre</a></li>
+   <li><a href="#acc">Accesorios</a></li><li><a href="#resenas">Reseñas</a></li>
+   <li><a href="#comunidad">Fotos de Clientes</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+  <div class="icons">
+   <button class="ib" id="sbt" aria-label="Buscar">⌕</button>
+   <button class="ib" id="wb" aria-label="Favoritos">♡<span class="cnt" id="wc">0</span></button>
+   <button class="ib" id="cb" aria-label="Carrito">🛍<span class="cnt" id="cc">0</span></button>
+  </div>
+ </div>
+ <div class="wrap" id="sb"><input id="q" placeholder="Buscar prendas, ej. leggings, hoodie, gorra…"></div>
+</header>
+
+<main id="top">
+<div class="hero">
+ <div class="t">
+  <h1>Descubre la elegancia y comodidad de Clever</h1>
+  <p>Ropa deportiva y de diario con telas suaves, cortes que abrazan y colores pensados para verte y sentirte increíble.</p>
+  <div class="btns"><a class="btn p" href="#mujer">Ver colección Mujer</a><a class="btn o" href="#hombre">Ver colección Hombre</a></div>
+ </div>
+</div>
+<div class="strip"><span>Tela de secado rápido</span><span>Tallas XS a XL</span><span>Diseñado en Colombia</span></div>
+
+<section class="cat" id="mujer"><div class="wrap"><h2>Colección Mujer</h2><p class="sub">Delicada y suave: tonos rosados y fucsias.</p><div class="grid" id="g-mujer"></div></div></section>
+<div class="band b1" role="img" aria-label="Una misma comodidad, dos maneras de vestirla"><div><h2>Una misma comodidad, dos maneras de vestirla</h2><p>Del entrenamiento a la calle, con telas suaves y cortes que se mueven contigo.</p><a class="btn p" href="#hombre">Ver colección Hombre</a></div></div>
+<section class="cat" id="hombre"><div class="wrap"><h2>Colección Hombre</h2><p class="sub">Sobria y fresca: azules pastel y neutros.</p><div class="grid" id="g-hombre"></div></div></section>
+<div class="band b2" role="img" aria-label="Los detalles que completan el look"><div><h2>Los detalles que completan el look</h2><p>Bolsos, gorras y joyería minimalista para cada día.</p><a class="btn p" href="#acc">Ver accesorios</a></div></div>
+<section class="cat" id="acc"><div class="wrap"><h2>Accesorios Mujer</h2><p class="sub">Pequeños detalles con mucho estilo.</p><div class="grid" id="g-acc"></div></div></section>
+<p class="sub" id="nores" hidden style="padding:60px 20px">No encontramos prendas con ese nombre. Prueba con “leggings” o “gorra”.</p>
+
+<section class="rv" id="resenas"><div class="wrap">
+ <h2>Lo que dicen nuestras clientas</h2><p class="sub">⭐ 4.9 / 5 · más de 1.200 reseñas verificadas</p>
+ <div class="rvg">
+  <div class="rc"><div class="st">★★★★★</div><p>“Los leggings no se transparentan ni con la sentadilla más profunda. La tela es suave y el tiro alto no se mueve.”</p><small>Valentina R. · Medellín · Leggings Aura</small></div>
+  <div class="rc"><div class="st">★★★★★</div><p>“El conjunto me quedó perfecto y el rosa es más bonito en persona. Ya voy por mi tercer pedido.”</p><small>Camila G. · Cartagena · Conjunto Brisa</small></div>
+  <div class="rc"><div class="st">★★★★★</div><p>“Compré el hoodie para mi novio y ahora me lo quita. Grueso pero fresco, y la talla M oversize es justa.”</p><small>Daniela P. · Bogotá · Hoodie Cloud</small></div>
+ </div>
+</div></section>
+
+<section id="comunidad"><div class="wrap">
+ <h2>Comunidad Clever</h2><p class="sub">Etiquétanos con @clever.oficial para aparecer aquí</p>
+ <div class="lb" id="lb"></div>
+</div></section>
+</main>
+
+<footer id="contacto"><div class="wrap">
+ <div class="fg">
+  <div><div class="logo" style="color:#fff">Clever</div><p style="font-size:14px;margin-top:6px">Moda que se mueve contigo. Hecha con cariño por su creadora.</p>
+   <a class="wa" href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp: +57 300 000 0000</a>
+   <p style="font-size:14px">Instagram · TikTok · Facebook</p></div>
+  <div><h4>Ayuda</h4><ul><li>Guía de tallas</li><li>Envíos y entregas</li><li>Preguntas frecuentes</li></ul></div>
+  <div><h4>Políticas</h4><ul><li>Devoluciones (30 días)</li><li>Privacidad</li><li>Términos de compra</li></ul></div>
+  <div><h4>Newsletter</h4><p style="font-size:14px">Recibe lanzamientos y 10% en tu primera compra.</p>
+   <form class="nl" id="nf"><input type="email" required placeholder="tu@correo.com" aria-label="Correo"><button>Suscribirme</button></form>
+   <div class="pay">Aceptamos: Visa · Mastercard · PSE · Nequi · Daviplata</div></div>
+ </div>
+ <div class="copy">© 2026 Clever. Todos los derechos reservados.</div>
+</div></footer>
+
+<div class="ov" id="ov"></div>
+<aside class="dr" id="dc" aria-label="Carrito"><div class="dh"><h3>Tu carrito</h3><button class="cl" data-close aria-label="Cerrar">×</button></div><div class="db" id="cart-b"></div><div class="df" id="cart-f" hidden></div></aside>
+<aside class="dr" id="dw" aria-label="Favoritos"><div class="dh"><h3>Favoritos</h3><button class="cl" data-close aria-label="Cerrar">×</button></div><div class="db" id="wish-b"></div></aside>
+<div class="md" id="md"><div class="mb" id="mb"></div></div>
+<div id="toast" role="status"></div>
+
+<script>
+// Una foto por producto, en el mismo orden que la lista P (6 mujer, 5 hombre, 5 accesorios).
+// Para usar tu propia foto (o una que tengas permiso de usar), agrega su URL como 9.º dato de la prenda en P.
+const IMG=['photo-1515886657613-9f3515b0c78f','photo-1518611012118-696072aa579a','photo-1571019613454-1cb2f99b2d8b','photo-1434389677669-e08b4cac3105','photo-1483985988355-763728e1935b','photo-1591047139829-d91aecb6caea','photo-1521572163474-6864f9cf17ab','photo-1556821840-3a63f95609a7','photo-1503342217505-b0a15ec3261c','photo-1583743814966-8936f5b7be1a','photo-1489987707025-afc232f7ea0f','photo-1584917865442-de89df76afd3','photo-1590874103328-eac38a683ce7','photo-1523381210434-271e8be1f52b','photo-1441986300917-64674bd600d8','photo-1445205170230-053b83016050'];
+const C={rosa:'#f4b6cb',fucsia:'#d9628f',blanco:'#f6f3f0',amarillo:'#fbeeb0',azul:'#b9d3ea',gris:'#cfcad4',marino:'#6c86a8',beige:'#e5d8c8'};
+const T=['XS','S','M','L','XL'],U=['Única'];
+// [nombre, precio, categoría, stock, colores, tallas, descripción, badge]
+const P=[
+['Top Aura',69900,'mujer',12,['rosa','fucsia','blanco'],T,'Top deportivo de soporte medio, espalda cruzada y tela que no se transparenta.','Nuevo'],
+['Leggings Brisa',119900,'mujer',8,['fucsia','rosa','azul'],T,'Tiro alto, costura plana y compresión suave que esculpe sin apretar.',''],
+['Vestido Petal',149900,'mujer',5,['rosa','blanco','amarillo'],T,'Vestido midi con falda ligera y short interno. Del gimnasio al café.','-15%'],
+['Conjunto Lila Sport',179900,'mujer',15,['azul','rosa'],T,'Top y legging a juego en tela de secado rápido.','Nuevo'],
+['Enterizo Sol',139900,'mujer',0,['amarillo','fucsia'],T,'Enterizo de una pieza con escote redondo y espalda abierta.',''],
+['Chaqueta Nube',159900,'mujer',9,['blanco','rosa'],T,'Chaqueta cortavientos ligera con capucha ajustable.',''],
+['Camiseta Oversize Lago',89900,'hombre',20,['azul','blanco','gris'],T,'Algodón pima grueso, caída amplia y cuello reforzado.',''],
+['Hoodie Cloud',179900,'hombre',11,['marino','gris','beige'],T,'Interior afelpado y bolsillo canguro. Talla oversize.','-10%'],
+['Short Ritmo',99900,'hombre',14,['marino','gris'],T,'Short de entrenamiento con bolsillos con cierre y forro respirable.',''],
+['Jogger Bruma',149900,'hombre',0,['gris','azul'],T,'Jogger de tela french terry con puños elásticos.',''],
+['Polo Clever Club',119900,'hombre',7,['blanco','azul','marino'],T,'Polo piqué clásico con logo bordado en el pecho.','Nuevo'],
+['Bolso Tote Rosé',129900,'acc',6,['rosa','beige'],U,'Tote amplio con interior acolchado para laptop y ropa de entrenamiento.',''],
+['Gorra Clever',59900,'acc',18,['blanco','rosa','azul'],U,'Gorra de algodón con visera curva y cierre ajustable.',''],
+['Calcetines Trío',39900,'acc',25,['blanco','rosa','amarillo'],U,'Pack de tres pares, talón reforzado y punta sin costura.','-20%'],
+['Sombrero Playa',79900,'acc',4,['beige','amarillo'],U,'Sombrero de ala ancha, ligero y plegable.',''],
+['Collar Luna',69900,'acc',10,['gris','amarillo'],U,'Joyería minimalista con baño hipoalergénico.','']
+];
+const CAT={mujer:['Delicada y suave: tonos rosados y fucsias.','#f8dfe8'],hombre:['Sobria y fresca: azules pastel y neutros.','#cfe0f1'],acc:['Los detalles que completan el look.','#fbeeb0']};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let cart=[],code=null,wish=new Set(),q='';
+const CODES={CLEVER10:['10% de descuento',.1],PRIMERA15:['15% en tu primera compra',.15]};
+const money=n=>'$'+n.toLocaleString('es-CO');
+const img=(i,w)=>P[i][8]||`https://images.unsplash.com/${IMG[i%IMG.length]}?w=${w}&q=75`;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t.h);t.h=setTimeout(()=>t.classList.remove('on'),2400)}
+function bump(el){el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump')}
+function photo(p,i,w,t){return `<div class="ph" style="--bg-c:color-mix(in srgb,${C[p[4][0]]} 42%,#fff)" data-q="${i}">${p[7]?`<span class="badge">${p[7]}</span>`:''}<button class="heart" data-w="${i}" aria-label="Favorito">${wish.has(i)?'♥':'♡'}</button><img src="${img(i,w)}" alt="${p[0]}" loading="lazy" onerror="this.remove()">${t?`<div class="ttl"><h3>${p[0]}</h3></div>`:''}</div>`}
+function ctrl(p,i){const out=p[3]===0;return `<div class="sw" data-sw>${p[4].map((c,k)=>`<button class="dot${k?'':' on'}" style="background:${C[c]}" title="${c}" aria-label="${c}"></button>`).join('')}</div>
+<div class="sz" data-sz>${p[5].map((s,k)=>`<button class="szb${k==(p[5].length>1?2:0)?' on':''}">${s}</button>`).join('')}</div>
+<div class="stock${p[3]&&p[3]<=6?' low':''}">${out?'Sin unidades disponibles':p[3]+' unidades disponibles'}</div>
+${out?`<button class="add" disabled>Agotado</button><button class="nt" data-n="${i}">Avísame cuando esté disponible</button>`:`<button class="add" data-a="${i}">Añadir al carrito</button>`}`}
+function card(p,i){const N={mujer:'Mujer',hombre:'Hombre',acc:'Accesorios'};return `<article class="card${p[3]?'':' so'}">${photo(p,i,600,1)}<div class="inf"><div class="pr"><span class="chip c-${p[2]}">${N[p[2]]}</span><span class="price">${money(p[1])}${p[7]&&p[7][0]=='-'?`<s>${money(Math.round(p[1]/(1-parseInt(p[7])/-100)/100)*100)}</s>`:''}</span></div>${ctrl(p,i)}</div></article>`}
+function render(){
+ ['mujer','hombre','acc'].forEach(c=>{
+  const l=P.map((p,i)=>[p,i]).filter(([p])=>p[2]===c&&(!q||(p[0]+p[6]).toLowerCase().includes(q)));
+  $('#g-'+c).innerHTML=l.map(([p,i])=>card(p,i)).join('');$('#'+c).hidden=!l.length});
+ $$('.band').forEach(b=>b.hidden=!!q);$('#nores').hidden=!!$$('.cat:not([hidden])').length}
+const th=i=>`<div class="th" style="background:${CAT[P[i][2]][1]}"><img src="${img(i,160)}" alt="" onerror="this.remove()"></div>`;
+const openD=id=>{$('#ov').classList.add('on');$('#'+id).classList.add('on')};
+const closeD=()=>$$('.dr.on,.ov.on').forEach(x=>x.classList.remove('on'));
+function syncW(){$('#wc').textContent=wish.size;$$('[data-w]').forEach(b=>b.textContent=wish.has(+b.dataset.w)?'♥':'♡');
+ $('#wish-b').innerHTML=wish.size?[...wish].map(i=>{const p=P[i];return `<div class="li">${th(i)}<div><b>${p[0]}</b><small>${money(p[1])}</small><button class="add" style="margin-top:8px;padding:7px 12px;font-size:13px" data-vq="${i}" ${p[3]?'':'disabled'}>${p[3]?'Elegir talla y color':'Agotado'}</button></div><button class="rm" data-wr="${i}">Quitar</button></div>`}).join(''):'<p class="em">Aún no tienes favoritos.<br>Toca el corazón de una prenda para guardarla aquí.</p>'}
+function drawCart(){
+ const n=cart.reduce((a,l)=>a+l.n,0),sub=cart.reduce((a,l)=>a+P[l.i][1]*l.n,0),d=code?Math.round(sub*CODES[code][1]):0,net=sub-d,ship=!sub||net>=250000?0:12000,tot=net+ship,left=250000-net;
+ $('#cc').textContent=n;
+ $('#cart-b').innerHTML=cart.length?`<div class="ship">${left>0?`Te faltan ${money(left)} para envío gratis`:'¡Tienes envío gratis!'}<i><b style="width:${Math.min(100,net/2500)}%"></b></i></div>`+cart.map((l,k)=>`<div class="li">${th(l.i)}<div><b>${P[l.i][0]}</b><small>${l.c} · Talla ${l.s}</small><div class="qt"><button data-q2="${k}" data-d="-1" aria-label="Menos">−</button>${l.n}<button data-q2="${k}" data-d="1" aria-label="Más">+</button></div></div><div>${money(P[l.i][1]*l.n)}<button class="rm" data-r="${k}">Quitar</button></div></div>`).join(''):'<p class="em">Tu carrito está vacío.<br>Añade una prenda para empezar tu pedido.</p>';
+ $('#cart-f').hidden=!cart.length;if(!cart.length)return;
+ const msg=`Hola Clever, quiero hacer este pedido:\n`+cart.map(l=>`• ${P[l.i][0]} (${l.c}, talla ${l.s}) x${l.n}`).join('\n')+(code?`\nCódigo: ${code}`:'')+`\nTotal: ${money(tot)}`;
+ $('#cart-f').innerHTML=`<div class="cd">${code?`<div class="tag"><span>${code} · ${CODES[code][0]}</span><button id="rc" aria-label="Quitar código">×</button></div>`:`<label for="ci">Código de descuento</label><div class="cr"><input id="ci" placeholder="Ej. CLEVER10"><button id="ap">Aplicar</button></div><small id="cm">Prueba CLEVER10 o PRIMERA15</small>`}</div>
+ <div class="tr"><span>Subtotal</span><span>${money(sub)}</span></div>${d?`<div class="tr"><span>Descuento</span><span>−${money(d)}</span></div>`:''}
+ <div class="tr"><span>Envío</span><span>${ship?money(ship):'Gratis'}</span></div><div class="tr t"><span>Total</span><span>${money(tot)}</span></div>
+ <a class="add ck" target="_blank" rel="noopener" href="https://wa.me/573000000000?text=${encodeURIComponent(msg)}">Finalizar pedido por WhatsApp</a>`}
+const sync=()=>drawCart();
+document.addEventListener('click',e=>{
+ const t=e.target;
+  if(t.closest('nav a'))$('#nv').classList.remove('on');
+ const dot=t.closest('.dot');if(dot){dot.parentNode.querySelectorAll('.dot').forEach(d=>d.classList.remove('on'));dot.classList.add('on')}
+ const sz=t.closest('.szb');if(sz){sz.parentNode.querySelectorAll('.szb').forEach(d=>d.classList.remove('on'));sz.classList.add('on')}
+ const h=t.closest('[data-w]');if(h){e.stopPropagation();const i=+h.dataset.w;wish.has(i)?wish.delete(i):wish.add(i);syncW();bump($('#wc'));toast(wish.has(i)?'Guardado en favoritos':'Quitado de favoritos');return}
+ const wr=t.closest('[data-wr]');if(wr){wish.delete(+wr.dataset.wr);syncW();return}
+ const vq=t.closest('[data-vq]');if(vq){closeD();openM(+vq.dataset.vq);return}
+ const rm=t.closest('[data-r]');if(rm){cart.splice(+rm.dataset.r,1);drawCart();return}
+ const qb=t.closest('[data-q2]');if(qb){const k=+qb.dataset.q2,l=cart[k];l.n+=+qb.dataset.d;if(l.n<1)cart.splice(k,1);else if(l.n>P[l.i][3]){l.n=P[l.i][3];toast('Solo hay '+l.n+' unidades disponibles')}drawCart();return}
+ if(t.closest('#ap')){const v=$('#ci').value.trim().toUpperCase();if(CODES[v]){code=v;drawCart();toast('Código aplicado: '+CODES[v][0])}else{$('#cm').textContent='Código no válido. Revisa que esté bien escrito.';$('#cm').style.color='#c2410c'}return}
+ if(t.closest('#rc')){code=null;drawCart();return}
+ if(t.closest('[data-close]')||t===$('#ov'))closeD();
+ const a=t.closest('[data-a]');if(a){const box=a.closest('.card,.mi'),i=+a.dataset.a,p=P[i];
+  const c=box.querySelector('.dot.on').title,s=box.querySelector('.szb.on').textContent;
+  const ex=cart.find(l=>l.i===i&&l.c===c&&l.s===s);if(ex){if(ex.n<p[3])ex.n++;else return toast('Solo hay '+p[3]+' unidades disponibles')}else cart.push({i,c,s,n:1});drawCart();bump($('#cc'));toast(`${p[0]} · ${c} · ${s} añadido al carrito`)}
+ const n=t.closest('[data-n]');if(n)toast(`Listo, te avisaremos cuando ${P[+n.dataset.n][0]} vuelva`);
+ const ph=t.closest('.ph[data-q]');if(ph)openM(+ph.dataset.q);
+ if(t.closest('.x')||t===$('#md'))$('#md').classList.remove('on');
+});
+function openM(i){const p=P[i];$('#mb').innerHTML=`<button class="x" aria-label="Cerrar">×</button>${photo(p,i,900)}<div class="mi"><h3>${p[0]}</h3><div class="price" style="font-size:20px">${money(p[1])}</div><p>${p[6]}</p>${ctrl(p,i)}</div>`;$('#md').classList.add('on')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#md').classList.remove('on');closeD()}});
+$('#sbt').onclick=()=>{$('#sb').classList.toggle('on');$('#q').focus()};
+$('#q').oninput=e=>{q=e.target.value.trim().toLowerCase();render();if(q)($('.cat:not([hidden])')||$('#mujer')).scrollIntoView()};
+$('#bg').onclick=()=>$('#nv').classList.toggle('on');
+$('#cb').onclick=()=>openD('dc');
+$('#wb').onclick=()=>openD('dw');
+$('#nf').onsubmit=e=>{e.preventDefault();toast('¡Gracias por suscribirte! Revisa tu correo para tu 10%.');e.target.reset()};
+const L=[['@vale.fit','Top Aura',0,'#f8dfe8'],['@cami.g','Leggings Brisa',1,'#cfe0f1'],['@dani_p','Hoodie Cloud',2,'#fbeeb0'],['@sofi.move','Conjunto Lila Sport',3,'#f8dfe8'],['@juli.co','Vestido Petal',4,'#cfe0f1'],['@maria.clever','Chaqueta Nube',1,'#fbeeb0'],['@lau.run','Gorra Clever',2,'#f8dfe8'],['@andresm','Polo Clever Club',3,'#cfe0f1']];
+$('#lb').innerHTML=L.map(l=>`<div tabindex="0" style="--c:${l[3]}"><img src="${img(l[2],700)}" alt="Foto de ${l[0]}" loading="lazy" onerror="this.remove()"><span><b>${l[0]}</b>Lleva: ${l[1]}</span></div>`).join('');
+render();syncW();drawCart();
+</script>
+</body>
+</html>
